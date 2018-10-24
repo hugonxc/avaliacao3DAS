@@ -16,13 +16,15 @@ public class DuracaoMinutos {
     }
 
     public int getDuracaoMinutos(){
-        if (minutosTermino > minutosInicio)
-            duracaoMinutos = minutosTermino - minutosInicio;
-        else {
-            duracaoMinutos = 60 - minutosInicio + minutosTermino;
-            if (duracaoMinutos == 60) //caso especial
-                duracaoMinutos = 0;
-        }
+        int duracaoMinutos = minutosTermino - minutosInicio;
+
+        if (duracaoMinutos < 0)
+            duracaoMinutos = this.adicionaHoraEmMinutos(duracaoMinutos);
+
         return duracaoMinutos;
+    }
+
+    private int adicionaHoraEmMinutos(int minutos){
+        return minutos + 60;
     }
 }
